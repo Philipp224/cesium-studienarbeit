@@ -1,0 +1,54 @@
+name: Cesium-App auf GitHub Pages veröffentlichen
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository laden
+        uses: actions/checkout@v6
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Abhängigkeiten installieren
+        run: npm ci
+
+      - name: Anwendung erstellen
+        run: npm run build
+        env:
+          VITE_CESIUM_ION_TOKEN: ${{ secrets.VITE_CESIUM_ION_TOKEN }}
+
+      - name: GitHub Pages vorbereiten
+        uses: actions/configure-pages@v6
+
+      - name: Produktionsdateien hochladen
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ./dist
+
+      - name: Anwendung veröffentlichen
+        id: deployment
+        uses: actions/deploy-pages@v5
