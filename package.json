@@ -12,7 +12,7 @@
   "devDependencies": {
     "bestzip": "^3.0.1",
     "vite": "^8.0.14",
-    "vite-plugin-cesium": "^1.2.22"
+    "vite-plugin-cesium": "1.2.22"
   },
   "dependencies": {
     "cesium": "^1.141.0"
