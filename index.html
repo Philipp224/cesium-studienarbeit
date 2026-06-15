@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cesium App Example</title>
+</head>
+<body>
+  <div id="toolbar">
+    <button id="toggleBuildings">
+      Gebäude ausblenden
+    </button>
+
+    <button id="zoomToBuildings">
+      Zum Modell
+    </button>
+  </div>
+
+  <div id="cesiumContainer"></div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+<div id="cesiumContainer"></div>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
+#toggleBuildings {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}

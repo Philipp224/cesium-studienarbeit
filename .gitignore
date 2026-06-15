@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.env.local
+LoD2_32_517_5404_2_bw/
+LoD2_32_517_5404_2_bw.zip
